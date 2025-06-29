@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Inter font with various weights for enhanced typography -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- QR Code Library CDN (qrious.js) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
     <style>
         /* Base styles for body, ensuring Inter font and smooth scrolling */
         body {
@@ -86,6 +88,15 @@
             #hero-section {
                 padding-top: 6rem; /* Adjust padding for smaller mobile headers */
             }
+        }
+        /* Styling for the QR code canvas to ensure it is centered and has a border */
+        #qrCodeCanvas {
+            border: 4px solid #10B981; /* Emerald border */
+            border-radius: 0.75rem; /* Rounded corners */
+            display: block; /* Make it a block element to center with mx-auto */
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Soft shadow */
         }
     </style>
 </head>
@@ -181,8 +192,6 @@
                         <li class="feature-item font-normal"><i class="fas fa-check-circle"></i> ISI Mark Concealed electrification and plumbing throughout.</li>
                         <li class="feature-item font-normal"><i class="fas fa-check-circle"></i> Dedicated Dish TV cable point in the living room.</li>
                         <li class="feature-item font-normal"><i class="fas fa-check-circle"></i> Convenient Geyser points provided in all bathrooms.</li>
-                        <li class="feature-item font-normal"><i class="fas fa-check-circle"></i> Provision for inverter wiring for uninterrupted power.</li>
-                        <li class="feature-item font-normal"><i class="fas fa-check-circle"></i> Ample light points, fan points, and plug points in each room.</li>
                     </ul>
                 </div>
                 <div class="card animate-on-scroll" style="transition-delay: 0.3s;">
@@ -200,7 +209,7 @@
                     <h3 class="text-2xl font-semibold mb-3 text-emerald-800">Amenities & Facilities</h3>
                     <ul class="text-left w-full space-y-2">
                         <li class="feature-item font-normal"><i class="fas fa-check-circle"></i> Allotted Car Parking with durable chequered tiles/paver blocks.</li>
-                        <li class="feature-item font-normal"><i class="fas fa-check-circle"></i> Grand Decorative entrance lobby.</li>
+                        <li class="feature-item font-normal"><i class="fas fa-check-circle"></i> Decorative entrance lobby.</li>
                         <li class="feature-item font-normal"><i class="fas fa-check-circle"></i> Power Backup for lift and common landing areas.</li>
                         <li class="feature-item font-normal"><i class="fas fa-check-circle"></i> Solar lighting in common areas, parking, lift, and for water pump.</li>
                         <li class="feature-item font-normal"><i class="fas fa-check-circle"></i> Comprehensive CCTV Camera Surveillance in lift and parking area.</li>
@@ -247,15 +256,18 @@
     <section id="location" class="bg-emerald-50 py-16 px-4 md:px-8">
         <div class="container mx-auto">
             <h2 class="section-title text-center animate-on-scroll">Prime Location & Connectivity</h2>
-            <div class="flex flex-col md:flex-row items-center gap-12 mt-12">
+            <div class="flex flex-col md:flex-row items-start gap-12 mt-12">
                 <div class="md:w-1/2 animate-on-scroll">
-                    <!-- Image from PDF Page 10 -->
+                    <!-- Main Location Map Image -->
                     <img src="Shubham Heights_02_page-0010.jpg" alt="Shubham Heights Location Map" class="w-full h-auto rounded-xl shadow-2xl border border-gray-100 mb-6">
-                    <p class="text-center text-lg text-gray-700 leading-relaxed font-normal">Scan the QR code below for exact project location and navigation:</p>
-                    <!-- QR code is part of the Location Map image, no separate QR image provided -->
+                    <p class="text-center text-lg text-gray-700 leading-relaxed font-normal">Scan for precise Google Maps location:</p>
+                    <!-- Dynamically generated QR code canvas for the provided Google Maps link -->
                     <div class="flex justify-center mt-6">
-                        <img src="Shubham Heights_02_page-0010.jpg" alt="QR Code for Location" class="w-44 h-44 rounded-lg shadow-xl object-contain">
+                        <canvas id="qrCodeCanvas" class="w-64 h-64"></canvas> <!-- Increased size -->
                     </div>
+                    <a href="https://maps.app.goo.gl/mkys9qoQMBhNQ6hb9" target="_blank" class="block text-center mt-4 text-emerald-600 hover:text-emerald-800 font-semibold transition-colors duration-200">
+                        View on Google Maps <i class="fas fa-external-link-alt ml-1 text-sm"></i>
+                    </a>
                 </div>
                 <div class="md:w-1/2 animate-on-scroll" style="transition-delay: 0.1s;">
                     <h3 class="text-2xl font-semibold mb-6 text-emerald-700">Explore Nearby Conveniences</h3>
@@ -298,10 +310,7 @@
                 </div>
             </div>
             <div class="mt-12 animate-on-scroll" style="transition-delay: 0.3s;">
-                <!-- Using the cut-section view image for CREDAI logo (Page 9) as it contains the logo, but crops might be needed -->
-                <!-- The original PDF page 9 also contains the CREDAI logo, but it's part of a larger image that includes the 3BHK cut-section.
-                     For a dedicated logo, you might crop it or use a separate logo file if available.
-                     For now, I'm pointing to the full image and will let the object-contain class handle scaling. -->
+                <!-- Image from PDF Page 9 (CREDAI logo, but using generic for now as specific part of image not provided) -->
                 <img src="Shubham Heights_02_page-0009.jpg" alt="CREDAI Logo" class="mx-auto h-16 opacity-90 object-contain">
                 <p class="text-md text-gray-600 mt-3 font-normal">Confederation of Real Estate Developers' Associations of India</p>
             </div>
@@ -396,6 +405,17 @@
                     // This listener is present primarily to ensure no other script inadvertently interferes
                     // and to maintain consistent event handling if future complexities arise.
                     // If a page refresh occurs, it's typically an environment-specific issue, not the 'tel:' protocol itself.
+                });
+            }
+
+            // Generate QR code on page load
+            const qrCodeCanvas = document.getElementById('qrCodeCanvas');
+            if (qrCodeCanvas) {
+                new QRious({
+                    element: qrCodeCanvas,
+                    value: 'https://maps.app.goo.gl/mkys9qoQMBhNQ6hb9', // The Google Maps link provided by the user
+                    size: 256, // Increased size for a fuller QR code
+                    level: 'H' // High error correction level
                 });
             }
         });
