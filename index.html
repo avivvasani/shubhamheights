@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shubham Heights - Luxurious 2 & 3 BHK Flats</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Inter font with various weights for enhanced typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles for body, ensuring Inter font and smooth scrolling */
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            color: #1a202c; /* Deeper gray for overall text */
+        }
+
+        /* Common styling for section titles */
+        .section-title {
+            /* Responsive text size, extra bold font, deep gray color, bottom border for emphasis */
+            @apply text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-6 border-b-4 border-emerald-600 pb-3 inline-block;
+        }
+
+        /* Styling for content cards */
+        .card {
+            /* White background, rounded corners, significant shadow, flex layout, centered text, and smooth hover effects */
+            @apply bg-white rounded-xl shadow-xl p-6 flex flex-col items-center text-center transition-all duration-300 transform hover:scale-102 hover:shadow-2xl;
+        }
+
+        /* Styling for list items within feature sections */
+        .feature-item {
+            /* Flex display for icon and text alignment, bottom margin */
+            /* Increased line-height for better readability within lists */
+            @apply flex items-start mb-3 text-gray-700 leading-relaxed;
+        }
+
+        /* Styling for icons within feature items */
+        .feature-item i {
+            /* Emerald color, text size, right margin for spacing */
+            @apply text-emerald-500 text-xl mr-3 mt-1;
+        }
+
+        /* Animations for elements appearing on scroll */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px); /* Starts slightly below its final position */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Smooth transition for opacity and position */
+        }
+        .animate-on-scroll.revealed {
+            opacity: 1;
+            transform: translateY(0); /* Moves to its final position */
+        }
+
+        /* Header animation for sliding in/out */
+        .main-header {
+            position: fixed; /* Use fixed for smooth sliding */
+            top: 0;
+            width: 100%;
+            z-index: 50; /* Ensure header stays on top */
+            transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            will-change: transform; /* Optimize for animation */
+        }
+        .main-header.header-hidden {
+            transform: translateY(-100%); /* Slide up to hide */
+        }
+        .main-header.scrolled {
+            background-color: rgba(6, 95, 70, 0.95); /* Slightly opaque emerald when scrolled */
+            backdrop-filter: blur(5px); /* Subtle blur effect for professionalism */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Shadow when scrolled */
+        }
+
+        /* Custom glow effect for the call button */
+        .call-button-glow:hover {
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.6); /* Emerald glow */
+        }
+
+        /* Adjust hero section to account for fixed header */
+        #hero-section {
+            padding-top: 8rem; /* Enough space to push content below the initial header */
+        }
+         /* Media query for mobile-specific adjustments */
+         @media (max-width: 767px) {
+            #hero-section {
+                padding-top: 6rem; /* Adjust padding for smaller mobile headers */
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Header Section -->
+    <header class="main-header bg-gradient-to-r from-emerald-600 to-emerald-800 text-white p-6 md:p-8 shadow-lg">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="text-center md:text-left mb-4 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">SHUBHAM HEIGHTS</h1>
+                <p class="text-xl md:text-2xl mt-2 font-light">2 & 3 BHK LUXURIOUS FLATS</p>
+                <p class="text-lg md:text-xl italic opacity-90 font-light">A find of freshness and modernity...</p>
+            </div>
+            <nav>
+                <ul class="flex flex-wrap justify-center md:flex-row space-x-0 md:space-x-8 text-lg">
+                    <li><a href="#about" class="block px-3 py-2 rounded-md hover:bg-emerald-700 transition-colors duration-200">About</a></li>
+                    <li><a href="#specifications" class="block px-3 py-2 rounded-md hover:bg-emerald-700 transition-colors duration-200">Specifications</a></li>
+                    <li><a href="#floor-plans" class="block px-3 py-2 rounded-md hover:bg-emerald-700 transition-colors duration-200">Floor Plans</a></li>
+                    <li><a href="#location" class="block px-3 py-2 rounded-md hover:bg-emerald-700 transition-colors duration-200">Location</a></li>
+                    <li><a href="#contact" class="block px-3 py-2 rounded-md hover:bg-emerald-700 transition-colors duration-200">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero-section" class="relative w-full h-[60vh] md:h-[70vh] bg-cover bg-center flex items-center justify-center text-white"
+             style="background-image: url('https://firebasestorage.googleapis.com/v0/b/restoration-test-app.appspot.com/o/Shubham%20Heights_02_page-0004.jpg-1e0e4e54-d35e-4cef-a6e8-e8f2bf3e53ad?alt=media&token=40a92d77-628f-4ed3-8a35-22d713c2394c');">
+        <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+        <div class="relative z-10 text-center px-4 animate-on-scroll">
+            <h2 class="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight drop-shadow-lg mb-4">
+                Experience Unmatched Luxury
+            </h2>
+            <p class="text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto font-light mb-8 leading-relaxed">
+                Your dream home, where modern design meets serene living. Discover a life of elegance and comfort.
+            </p>
+            <a href="#contact" class="inline-block bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-8 rounded-full text-xl md:text-2xl shadow-lg transition-all duration-300 transform hover:-translate-y-1 call-button-glow">
+                Enquire Now <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 px-4 md:px-8 bg-white">
+        <div class="container mx-auto animate-on-scroll">
+            <h2 class="section-title text-center">About Shubham Heights</h2>
+            <div class="flex flex-col md:flex-row items-center gap-12 mt-12">
+                <div class="md:w-1/2 order-2 md:order-1">
+                    <p class="text-lg leading-relaxed mb-6 text-gray-700 font-medium">
+                        Shubham Heights is not just a residence; it's a statement of contemporary living. Offering meticulously designed 2 & 3 BHK luxurious flats, our project promises a lifestyle defined by sophistication, comfort, and tranquility. Every detail, from the grand entrance to the smallest fixture, reflects a commitment to quality and aesthetic excellence.
+                    </p>
+                    <p class="text-lg leading-relaxed text-gray-700 font-medium">
+                        Nestled in a vibrant yet peaceful locale, Shubham Heights offers the perfect balance between urban convenience and a serene environment. Experience the joy of spacious interiors, modern amenities, and a community that feels like family. Your journey to an elevated lifestyle begins here.
+                    </p>
+                </div>
+                <div class="md:w-1/2 order-1 md:order-2">
+                    <!-- Image from PDF Page 4 -->
+                    <img src="https://firebasestorage.googleapis.com/v0/b/restoration-test-app.appspot.com/o/Shubham%20Heights_02_page-0004.jpg-1e0e4e54-d35e-4cef-a6e8-e8f2bf3e53ad?alt=media&token=40a92d77-628f-4ed3-8a35-22d713c2394c" alt="Shubham Heights Building Rendering" class="w-full h-auto rounded-xl shadow-2xl border border-gray-100">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specifications Section -->
+    <section id="specifications" class="bg-emerald-50 py-16 px-4 md:px-8">
+        <div class="container mx-auto">
+            <h2 class="section-title text-center animate-on-scroll">Premium Specifications</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+                <div class="card animate-on-scroll">
+                    <i class="fas fa-building text-5xl mb-4 text-emerald-600"></i>
+                    <h3 class="text-2xl font-semibold mb-3 text-emerald-800">Structure & Walls</h3>
+                    <ul class="text-left w-full space-y-2">
+                        <li class="feature-item font-normal"><i class="fas fa-check-circle"></i> RCC frame structure for enhanced durability.</li>
+                        <li class="feature-item font-normal"><i class="fas fa-check-circle"></i> External 6" and internal 4" thick brickwork.</li>
+                        <li class="feature-item font-normal"><i class="fas fa-check-circle"></i> Double coat external plaster with acrylic emulsion paint.</li>
+                        <li class="feature-item font-normal"><i class="fas fa-check-circle"></i> Internal Neru finished with Premium Emulsion Paint.</li>
+                    </ul>
+                </div>
+                <div class="card animate-on-scroll" style="transition-delay: 0.1s;">
+                    <i class="fas fa-bath text-5xl mb-4 text-emerald-600"></i>
+                    <h3 class="text-2xl font-semibold mb-3 text-emerald-800">Flooring & Finishes</h3>
+                    <ul class="text-left w-full space-y-2">
+                        <li class="feature-item font-normal"><i class="fas fa-check-circle"></i> High-quality Vitrified tiles flooring with 3" skirting.</li>
+                        <li class="feature-item font-normal"><i class="fas fa-check-circle"></i> Elegant Granite kitchen platform with stainless steel sink.</li>
+                        <li class="feature-item font-normal"><i class="fas fa-check-circle"></i> Glazed tiles dado up to slab level above kitchen platform.</li>
+                        <li class="feature-item font-normal"><i class="fas fa-check-circle"></i> Ceramic flooring and glazed tile dado upto Lintel level in toilets.</li>
+                    </ul>
+                </div>
+                <div class="card animate-on-scroll" style="transition-delay: 0.2s;">
+                    <i class="fas fa-bolt text-5xl mb-4 text-emerald-600"></i>
+                    <h3 class="text-2xl font-semibold mb-3 text-emerald-800">Electrical & Plumbing</h3>
+                    <ul class="text-left w-full space-y-2">
+                        <li class="feature-item font-normal"><i class="fas fa-check-circle"></i> ISI Mark Concealed electrification and plumbing throughout.</li>
+                        <li class="feature-item font-normal"><i class="fas fa-check-circle"></i> Dedicated Dish TV cable point in the living room.</li>
+                        <li class="feature-item font-normal"><i class="fas fa-check-circle"></i> Convenient Geyser points provided in all bathrooms.</li>
+                        <li class="feature-item font-normal"><i class="fas fa-check-circle"></i> Provision for inverter wiring for uninterrupted power.</li>
+                        <li class="feature-item font-normal"><i class="fas fa-check-circle"></i> Ample light points, fan points, and plug points in each room.</li>
+                    </ul>
+                </div>
+                <div class="card animate-on-scroll" style="transition-delay: 0.3s;">
+                    <i class="fas fa-door-open text-5xl mb-4 text-emerald-600"></i>
+                    <h3 class="text-2xl font-semibold mb-3 text-emerald-800">Doors & Windows</h3>
+                    <ul class="text-left w-full space-y-2">
+                        <li class="feature-item font-normal"><i class="fas fa-check-circle"></i> All doors are laminate finish Flush doors with sturdy wooden frames.</li>
+                        <li class="feature-item font-normal"><i class="fas fa-check-circle"></i> Elegant Toilet door frames crafted from Granite.</li>
+                        <li class="feature-item font-normal"><i class="fas fa-check-circle"></i> Three track coated Aluminum sliding windows with safety grill.</li>
+                        <li class="feature-item font-normal"><i class="fas fa-check-circle"></i> Durable Granite frames in all windows.</li>
+                    </ul>
+                </div>
+                <div class="card animate-on-scroll" style="transition-delay: 0.4s;">
+                    <i class="fas fa-parking text-5xl mb-4 text-emerald-600"></i>
+                    <h3 class="text-2xl font-semibold mb-3 text-emerald-800">Amenities & Facilities</h3>
+                    <ul class="text-left w-full space-y-2">
+                        <li class="feature-item font-normal"><i class="fas fa-check-circle"></i> Allotted Car Parking with durable chequered tiles/paver blocks.</li>
+                        <li class="feature-item font-normal"><i class="fas fa-check-circle"></i> Grand Decorative entrance lobby.</li>
+                        <li class="feature-item font-normal"><i class="fas fa-check-circle"></i> Power Backup for lift and common landing areas.</li>
+                        <li class="feature-item font-normal"><i class="fas fa-check-circle"></i> Solar lighting in common areas, parking, lift, and for water pump.</li>
+                        <li class="feature-item font-normal"><i class="fas fa-check-circle"></i> Comprehensive CCTV Camera Surveillance in lift and parking area.</li>
+                        <li class="feature-item font-normal"><i class="fas fa-check-circle"></i> Reliable Municipal & Borewell water Connection.</li>
+                        <li class="feature-item font-normal"><i class="fas fa-check-circle"></i> Lush NMC Open space area (Garden) in front of the building.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floor Plans Section -->
+    <section id="floor-plans" class="py-16 px-4 md:px-8 bg-white">
+        <div class="container mx-auto">
+            <h2 class="section-title text-center animate-on-scroll">Thoughtfully Designed Floor Plans</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-12">
+                <div class="card animate-on-scroll">
+                    <h3 class="text-2xl font-semibold mb-4 text-emerald-700">Parking Floor Plan</h3>
+                    <!-- Image from PDF Page 5 -->
+                    <img src="https://firebasestorage.googleapis.com/v0/b/restoration-test-app.appspot.com/o/Shubham%20Heights_02_page-0005.jpg-f69c4be4-1463-46b9-8b62-db1262ac16c7?alt=media&token=e110b106-a88f-4f68-98e6-12185b318788" alt="Parking Floor Plan" class="w-full h-auto rounded-lg shadow-md mb-4">
+                    <p class="text-gray-600 leading-relaxed font-normal">Efficiently designed parking spaces complemented by a proposed 9.00 M wide road and a serene NMC open space (garden) for residents to enjoy.</p>
+                </div>
+                <div class="card animate-on-scroll" style="transition-delay: 0.1s;">
+                    <h3 class="text-2xl font-semibold mb-4 text-emerald-700">Typical 1st-6th Floor Plans (2 & 3 BHK)</h3>
+                    <!-- Image from PDF Page 6 -->
+                    <img src="https://firebasestorage.googleapis.com/v0/b/restoration-test-app.appspot.com/o/Shubham%20Heights_02_page-0006.jpg-7dc94f54-2a92-47ef-9355-c1f965e91a7e?alt=media&token=b3670c79-8898-4444-93e5-8f6825c34537" alt="Typical Floor Plan" class="w-full h-auto rounded-lg shadow-md mb-4">
+                    <p class="text-gray-600 leading-relaxed font-normal">Explore the meticulously crafted layouts for our 2 & 3 BHK units, featuring spacious living areas, modern kitchens, comfortable bedrooms, and private balconies, all designed for optimal living.</p>
+                </div>
+                <div class="card lg:col-span-2 animate-on-scroll" style="transition-delay: 0.2s;">
+                    <h3 class="text-2xl font-semibold mb-4 text-emerald-700">Seventh Floor Plan & Terrace Plan</h3>
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <!-- Image from PDF Page 7 -->
+                        <img src="https://firebasestorage.googleapis.com/v0/b/restoration-test-app.appspot.com/o/Shubham%20Heights_02_page-0007.jpg-7ae5f022-6bcb-4508-a6e1-0af6022dd0c9?alt=media&token=c16260a9-2d17-488f-a99f-7e9b068832a8" alt="Seventh Floor Plan" class="w-full md:w-1/2 h-auto rounded-lg shadow-md">
+                        <!-- Image from PDF Page 8 -->
+                        <img src="https://firebasestorage.googleapis.com/v0/b/restoration-test-app.appspot.com/o/Shubham%20Heights_02_page-0008.jpg-b986c3cc-64f5-400f-a0c8-05624911b5ae?alt=media&token=b4b248a8-b648-43d9-95e3-c35f9922e379" alt="Terrace Floor Plan" class="w-full md:w-1/2 h-auto rounded-lg shadow-md">
+                    </div>
+                    <p class="text-gray-600 mt-6 leading-relaxed font-normal">The exclusive seventh floor offers enhanced layouts, while the expansive common terrace provides a perfect retreat for relaxation, social gatherings, and enjoying panoramic views.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="bg-emerald-50 py-16 px-4 md:px-8">
+        <div class="container mx-auto">
+            <h2 class="section-title text-center animate-on-scroll">Prime Location & Connectivity</h2>
+            <div class="flex flex-col md:flex-row items-center gap-12 mt-12">
+                <div class="md:w-1/2 animate-on-scroll">
+                    <!-- Image from PDF Page 10 -->
+                    <img src="https://firebasestorage.googleapis.com/v0/b/restoration-test-app.appspot.com/o/Shubham%20Heights_02_page-0010.jpg-2bb070a8-90a8-49f2-8fb7-964074f28c3e?alt=media&token=e93e223c-f5e5-4d00-a0c5-55543d8a5996" alt="Shubham Heights Location Map" class="w-full h-auto rounded-xl shadow-2xl border border-gray-100 mb-6">
+                    <p class="text-center text-lg text-gray-700 leading-relaxed font-normal">Scan the QR code below for exact project location and navigation:</p>
+                    <!-- Placeholder for QR Code (QR code image was not provided as a separate file, assuming it's part of the map image or needs to be generated if required) -->
+                    <div class="flex justify-center mt-6">
+                        <img src="https://placehold.co/180x180/34D399/FFFFFF/png?text=QR+Code" alt="QR Code for Location" class="w-44 h-44 rounded-lg shadow-xl">
+                    </div>
+                </div>
+                <div class="md:w-1/2 animate-on-scroll" style="transition-delay: 0.1s;">
+                    <h3 class="text-2xl font-semibold mb-6 text-emerald-700">Explore Nearby Conveniences</h3>
+                    <ul class="list-none space-y-4 text-lg leading-relaxed">
+                        <li class="feature-item"><i class="fas fa-hospital text-emerald-600 text-2xl"></i> <span class="text-gray-700 font-normal">Leading Healthcare:</span> Apollo Hospitals, Sadguna Hospital ensuring your well-being.</li>
+                        <li class="feature-item"><i class="fas fa-graduation-cap text-emerald-600 text-2xl"></i> <span class="text-gray-700 font-normal">Educational Hubs:</span> Close proximity to K. K. Wagh Institute Of Engineering Education, Loknete Vyankatrao Hire Arts Science & Commerce College.</li>
+                        <li class="feature-item"><i class="fas fa-bank text-emerald-600 text-2xl"></i> <span class="text-gray-700 font-normal">Financial Accessibility:</span> Easy access to SBI Bank ATM, Dena Bank ATM.</li>
+                        <li class="feature-item"><i class="fas fa-landmark text-emerald-600 text-2xl"></i> <span class="text-gray-700 font-normal">Spiritual & Cultural Sites:</span> Near Shri Swaminarayan Mandir, Panchvati Panjrapole.</li>
+                        <li class="feature-item"><i class="fas fa-road text-emerald-600 text-2xl"></i> <span class="text-gray-700 font-normal">Seamless Connectivity:</span> Strategically located with excellent access to Old Mumbai-Agra Highway, Aurangabad Nashik Highway.</li>
+                        <li class="feature-item"><i class="fas fa-bus text-emerald-600 text-2xl"></i> <span class="text-gray-700 font-normal">Public Transport:</span> Conveniently close to Panchvati Depo, Nimani CT Bus Stand.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 px-4 md:px-8 bg-white">
+        <div class="container mx-auto text-center animate-on-scroll">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="text-2xl md:text-3xl mt-8 font-semibold text-gray-800 mb-10 leading-relaxed">
+                Ready to find your dream home? Call us today!
+            </p>
+            <a id="callPhoneNumber" href="tel:+919029119595" class="inline-block bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold py-5 px-10 rounded-full text-2xl md:text-4xl shadow-xl transition-all duration-300 transform hover:-translate-y-2 call-button-glow">
+                <i class="fas fa-phone-alt mr-4"></i> 9029 119 595
+            </a>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mt-16 max-w-5xl mx-auto">
+                <div class="bg-emerald-50 rounded-lg shadow-lg p-8 transform hover:scale-105 transition-transform duration-300">
+                    <h3 class="text-xl font-bold mb-3 text-emerald-800">ARCHITECT</h3>
+                    <p class="text-lg text-gray-700 font-normal">Ar. Rajesh Mavani</p>
+                </div>
+                <div class="bg-emerald-50 rounded-lg shadow-lg p-8 transform hover:scale-105 transition-transform duration-300" style="transition-delay: 0.1s;">
+                    <h3 class="text-xl font-bold mb-3 text-emerald-800">STRUCTURAL DESIGNER</h3>
+                    <p class="text-lg text-gray-700 font-normal">Aadhar Engineers</p>
+                </div>
+                <div class="bg-emerald-50 rounded-lg shadow-lg p-8 transform hover:scale-105 transition-transform duration-300" style="transition-delay: 0.2s;">
+                    <h3 class="text-xl font-bold mb-3 text-emerald-800">LEGAL ADVISOR</h3>
+                    <p class="text-lg text-gray-700 font-normal">Adv. Parmanand Gujrathi</p>
+                </div>
+            </div>
+            <div class="mt-12 animate-on-scroll" style="transition-delay: 0.3s;">
+                <!-- Image from PDF Page 9 (CREDAI logo, but using generic for now as specific part of image not provided) -->
+                <img src="https://firebasestorage.googleapis.com/v0/b/restoration-test-app.appspot.com/o/Shubham%20Heights_02_page-0009.jpg-4a80377e-c718-4de6-9e9f-60770e3b6905?alt=media&token=ea51048f-c081-424a-b516-e82b79a0b943" alt="CREDAI Logo" class="mx-auto h-16 opacity-90">
+                <p class="text-md text-gray-600 mt-3 font-normal">Confederation of Real Estate Developers' Associations of India</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-900 text-gray-300 py-10 px-4 md:px-8 text-center text-sm">
+        <div class="container mx-auto">
+            <p class="max-w-4xl mx-auto mb-6 leading-relaxed opacity-80 font-light">
+                The imagery used in this brochure/website is indicative of style only. The photographs of the interiors, surrounding views, and location may have been digitally enhanced or altered and do not represent actual or surrounding views. Standard fittings and finishes are subject to availability and vendor discretion. The images shown are not standard and will not be provided as a part of an apartment. The information contained herein is believed to be true but not guaranteed. The colors of the buildings are indicative. This is a reference document intended only to provide generic information and does not constitute an offer or contract.
+            </p>
+            <p class="text-gray-400 font-normal">&copy; 2025 Shubham Heights. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for scroll animations and dynamic header -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Intersection Observer for scroll animations (fade-in/slide-up)
+            const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
+            const observerOptions = {
+                root: null, // relative to the viewport
+                rootMargin: '0px',
+                threshold: 0.1 // 10% of the item is visible
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Add 'revealed' class to trigger CSS animation
+                        entry.target.classList.add('revealed');
+                        observer.unobserve(entry.target); // Stop observing once revealed
+                    }
+                });
+            }, observerOptions);
+
+            // Observe each element marked for animation
+            elementsToAnimate.forEach(el => observer.observe(el));
+
+            // Dynamic Header Animation (Slide In/Out)
+            const header = document.querySelector('.main-header');
+            let lastScrollY = window.scrollY; // Track previous scroll position
+            const headerHeight = header.offsetHeight; // Get header's height
+
+            window.addEventListener('scroll', () => {
+                const currentScrollY = window.scrollY;
+
+                // Add 'scrolled' class for background/shadow after initial scroll
+                if (currentScrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+
+                // Logic to hide/show header based on scroll direction
+                if (currentScrollY > lastScrollY && currentScrollY > headerHeight) {
+                    // Scrolling down and past header initial height, hide header
+                    header.classList.add('header-hidden');
+                } else if (currentScrollY < lastScrollY) {
+                    // Scrolling up, show header
+                    header.classList.remove('header-hidden');
+                }
+
+                lastScrollY = currentScrollY; // Update last scroll position
+            });
+
+            // Smooth scroll for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault(); // Prevent default jump behavior
+
+                    // Calculate offset for fixed header
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    const headerOffset = header.offsetHeight; // Get header height
+                    const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+                    const offsetPosition = elementPosition - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth' // Smooth scroll effect
+                    });
+                });
+            });
+
+            // Explicit handling for the phone number click (retained for robustness)
+            const callPhoneNumberLink = document.getElementById('callPhoneNumber');
+            if (callPhoneNumberLink) {
+                callPhoneNumberLink.addEventListener('click', function(e) {
+                    // The 'tel:' protocol is natively handled by browsers.
+                    // This listener is present primarily to ensure no other script inadvertently interferes
+                    // and to maintain consistent event handling if future complexities arise.
+                    // If a page refresh occurs, it's typically an environment-specific issue, not the 'tel:' protocol itself.
+                });
+            }
+        });
+    </script>
+</body>
+</html>
