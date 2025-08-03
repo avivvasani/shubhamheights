@@ -81,12 +81,7 @@
         #hero-section {
             padding-top: 8rem; /* Enough space to push content below the initial header */
         }
-         /* Media query for mobile-specific adjustments */
-         @media (max-width: 767px) {
-            #hero-section {
-                padding-top: 6rem; /* Adjust padding for smaller mobile headers */
-            }
-        }
+
         /* Styling for the QR code image to ensure it is centered and has a border */
         #qrCodeImage {
             border: 4px solid #10B981; /* Emerald border */
@@ -99,6 +94,57 @@
             height: 256px; /* Explicit size to match previous canvas size */
             object-fit: contain; /* Ensure the image fits within the bounds without stretching */
             background-color: white; /* Ensure background is white if image has transparency */
+        }
+
+        /* ================================================================= */
+        /* MEDIA QUERIES FOR DISTINCT MOBILE DESIGN */
+        /* Styles inside this block will ONLY apply to screens 767px or smaller */
+        /* ================================================================= */
+        @media (max-width: 767px) {
+            #hero-section {
+                padding-top: 6rem; /* Adjust padding for smaller mobile headers */
+                height: 70vh; /* Make the hero section taller on mobile */
+            }
+            .main-header {
+                flex-direction: column; /* Stack header content vertically on mobile */
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            .main-header nav ul {
+                flex-wrap: wrap; /* Allow navigation links to wrap to a new line */
+                justify-content: center;
+                margin-top: 0.5rem;
+            }
+            .main-header nav ul li a {
+                padding: 0.25rem 0.5rem;
+                font-size: 0.875rem; /* Smaller font size for nav links */
+            }
+            .section-title {
+                font-size: 2rem; /* Smaller font for section titles on mobile */
+                text-align: center;
+            }
+            .card {
+                padding: 1rem; /* Reduced padding for cards on mobile */
+            }
+            .hero-section h2 {
+                font-size: 2.5rem; /* Smaller hero title on mobile */
+            }
+            .hero-section p {
+                font-size: 1rem; /* Smaller hero text on mobile */
+            }
+            .hero-section a {
+                font-size: 1.25rem; /* Smaller button on mobile */
+            }
+            .section-title {
+                text-align: center;
+            }
+            #location .flex-col {
+                flex-direction: column; /* Stack the location map and details vertically */
+            }
+            #contact .grid {
+                display: block; /* Change contact grid to a block layout */
+                space-y: 1rem; /* Add spacing between the blocks */
+            }
         }
     </style>
 </head>
